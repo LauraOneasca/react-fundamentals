@@ -1,7 +1,7 @@
 // Rendering Lists
 // http://localhost:3000/isolated/final/07.js
 
-import React from 'react'
+import * as React from 'react'
 
 const allItems = [
   {id: 'apple', value: '🍎 apple'},
@@ -14,11 +14,14 @@ function App() {
   const [items, setItems] = React.useState(allItems)
 
   function addItem() {
-    setItems([...items, allItems.find(i => !items.includes(i))])
+    setItems([
+      ...items,
+      allItems.find(i => !items.map(({id}) => id).includes(i.id)),
+    ])
   }
 
   function removeItem(item) {
-    setItems(items.filter(i => i !== item))
+    setItems(items.filter(i => i.id !== item.id))
   }
 
   return (
