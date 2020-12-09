@@ -11,9 +11,10 @@
     const className = 'container'
     const greeting = 'Hello'
     const subject = 'World'
-    const message = `${greeting} ${subject}`
+    const children = `${greeting} ${subject}`
+    const props = {children, className}
 
-    const element = <div className={className}>{message}</div>
+    const element = <div {...props} />
 
     ReactDOM.render(element, document.getElementById('root'))
   </script>
